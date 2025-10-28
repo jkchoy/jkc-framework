@@ -59,6 +59,7 @@ TABLE OF CONTENTS
 
   --color-blue-100: #caf0f8;
   --color-blue-400: #3170ce;
+  --color-blue-600: #0b3d91;
   --color-blue-900: #061a9e;
 
   --color-purple-200: #dcbcf1;
@@ -70,7 +71,7 @@ TABLE OF CONTENTS
   --color-brown-200: #e6b89c;
   --color-brown-400: #a0522d;
   --color-brown-600: #7b3f1a;
-  --color-brown-900: #4b2e1e;
+
 
   /* DEFINE SEMANTIC COLORS */
   --color-body-background: var(--color-white);
@@ -553,6 +554,11 @@ html {
 
 .site-nav a:hover {
   color: var(--color-siteheader-hover);
+  text-decoration: none;
+  font-weight: bold;
+  display: block;
+  padding: var(--unit-xs);
+  padding-block-start: calc(var(--unit-xs) + .1em);
 }
 
 /* SHOW MENU BUTTON ON HIGHER LAYER WHEN NAV IS OPEN */
@@ -600,7 +606,7 @@ html {
     width: 100%;
     height: 100%;
     background: var(--color-blue-400);
-    transition: translate 0.3s ease-out;
+    /* transition: translate 0.3s ease-out; */
   }
 
   .site-nav[data-menustate] a {
@@ -609,15 +615,38 @@ html {
 
   .site-nav[data-menustate="open"] ul {
     translate: 0 0;
+    animation: openMenuAnimation .3s forwards;
   }
 
   .site-nav[data-menustate="closed"] ul {
     translate: 100% 0;
+    animation: closedMenuAnimation .3s forwards;
+  }
+
+  @keyframes openMenuAnimation {
+    0% {
+      translate: 100% 0;
+    }
+
+    100% {
+      translate: 0 0;
+    }
+  }
+
+  @keyframes closedMenuAnimation {
+    0% {
+      translate: 0 0;
+    }
+
+    100% {
+      translate: 100% 0;
+    }
   }
 
   /* ENABLE SVG ANIMATION FOR THE NAVICON */
   .site-nav[data-menustate] .simple-navicon rect {
-    transition: all .3s ease-out
+    transition: all .3s ease-out;
+    fill: var(--color-primary);
   }
 
   /* CHANGE COLOR OF THE SVG NAVICON WHEN MENU IS OPEN */
@@ -767,6 +796,8 @@ pre:has(code) {
   padding-inline: 50px;
 }
 
+
+/* TEMP SOLUTION COVERS THE CONENT WITH A WHITE BG, FIX IN THE FUTURE IF THERE IS TIME */
 .swiper-button-prev {
   translate: -4px -50%;
   background-color: white;
@@ -863,11 +894,12 @@ body>* {
   font-weight: bold;
   text-transform: uppercase;
   opacity: .5;
+  line-height: 1;
 }
 
 .jkc-headline {
   font-size: 3rem;
-  margin-block: var(--unit-xs);
+  margin-block: var(--unit-s);
   line-height: 1.1;
 }
 
@@ -875,7 +907,7 @@ body>* {
   font-size: 1.5rem;
   font-weight: 400;
   font-style: italic;
-  margin-block: var(--unit-s) 0;
+  margin-block: var(--unit-xs);
   opacity: .8;
   line-height: 1.2;
 }
@@ -884,72 +916,16 @@ body>* {
   ANIMATION 
 --------------------- */
 
+/* REGULAR ON PAGE ANIMATION */
 
-/* BUTTON ANIMAION */
-.scale-and-fade-in {
-  animation-name: scale-and-fade-in;
-  animation-duration: .4s;
-  animation-timing-function: ease-in-out;
-}
-
-@keyframes scale-and-fade-in {
-  0% {
-    opacity: 0;
-    scale: 0;
-  }
-
-  100% {
-    opacity: 1;
-    scale: 1;
-  }
-}
-
-/* TEST ANIMATION */
-/* .slide-from-left-and-fade-in {
-  animation-name: scale-and-fade-in;
-  animation-duration: .4s;
-  animation-timing-function: ease-in-out;
-
-}
-
-@keyframes slide-from-left-and-fade-in {
-  0% {
-    opacity: 0;
-    translate: -40px;
-  }
-
-  100% {
-    opacity: 1;
-    translate: 0 0;
-  }
-}
-
-.delay-1 {
-  animation-delay: .1s;
-}
-
-.delay-2 {
-  animation-delay: .2s;
-}
-
-.delay-3 {
-  animation-delay: .3s;
-}
-
-.delay-4 {
-  animation-delay: .4s;
-} */
-
-
-/* REGULAR ON PLAGE LOAD ANIMATIONS */
-
-..slide-from-top-and-fade-in {
+.slide-from-top-and-fade-in {
   animation-name: slide-from-top-and-fade-in;
-  animation-duration: 1s;
+  animation-duration: .1s;
   animation-timing-function: cubic-bezier(0, .5, .5, 1);
   animation-fill-mode: forwards;
   opacity: 0;
   translate: 0 -40px;
+
 }
 
 @keyframes slide-from-top-and-fade-in {
@@ -966,18 +942,19 @@ body>* {
 
 
 .slide-from-left-and-fade-in {
-  animation-name: slide-from-left-and-fade-in;
-  animation-duration: 2s;
+  animation-name: scale-and-fade-in;
+  animation-duration: .2s;
   animation-timing-function: cubic-bezier(0, 1, 0, 1);
   animation-fill-mode: forwards;
   opacity: 0;
   translate: -20px 0;
+
 }
 
 @keyframes slide-from-left-and-fade-in {
   0% {
     opacity: 0;
-    translate: -20px 0;
+    translate: -20px;
   }
 
   100% {
@@ -991,28 +968,29 @@ body>* {
 }
 
 .delay-1 {
-  animation-delay: 0.1s;
+  animation-delay: .1s;
 }
 
 .delay-2 {
-  animation-delay: 0.2s;
+  animation-delay: .2s;
 }
 
 .delay-3 {
-  animation-delay: 0.3s;
+  animation-delay: .3s;
 }
 
 .delay-4 {
-  animation-delay: 0.5s;
+  animation-delay: .5s;
 }
 
 .delay-5 {
-  animation-delay: 0.7s;
+  animation-delay: .7s;
 }
 
 .delay-6 {
-  animation-delay: 0.9s;
+  animation-delay: .9s;
 }
+
 
 
 /* SCROLL-TRIGGERED ANIMATION */

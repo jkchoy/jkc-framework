@@ -38,6 +38,9 @@ TABLE OF CONTENTS
     # STICKYBOX
     # JKC TYPE BLOCK
 
+   # ANIMATION
+    # REGULAR ON PAGE LOAD ANIMATION
+    # SCROLL TRIGGRED ANIMATION 
 ----------------------- */
 
 /* ------------------
@@ -741,6 +744,57 @@ pre:has(code) {
   white-space: pre-wrap;
 }
 
+/* SWIPER CSS STYLING */
+
+.swiper {
+  padding-block-end: 2rem;
+  text-align: center;
+}
+
+
+.swiper-wrapper {}
+
+/* MOVE SWIPER ARROWS OUTSIDE OF SWIPER */
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: var(--color-white);
+  padding: var(--unit-xs);
+  border-radius: 100%;
+}
+
+/* TEMP WAY TO MOVE ARROWS OUTSIDE OF SWIPER */
+.swiper {
+  padding-inline: 50px;
+}
+
+.swiper-button-prev {
+  translate: -4px -50%;
+  background-color: white;
+  height: 100%;
+  border-radius: 0;
+  top: 0;
+  left: 0;
+}
+
+.swiper-button-next {
+  translate: 4px -50%;
+  background-color: white;
+  height: 100%;
+  border-radius: 0;
+  top: 0;
+  right: 0;
+}
+
+/* REMOVE COLOR CARD WIDTHS AND HEIGHTS WHEN INSIDE A SWIPER SLIDE */
+.swiper-slide .card {
+  display: block;
+}
+
+.swiper-slide .color-swatch {
+  width: 100%;
+  min-height: 150px;
+}
+
 
 /* ------------------
   CUSTOM SITE STYLING 
@@ -823,5 +877,211 @@ body>* {
   font-style: italic;
   margin-block: var(--unit-s) 0;
   opacity: .8;
-  s
+  line-height: 1.2;
+}
+
+/* ------------------
+  ANIMATION 
+--------------------- */
+
+
+/* BUTTON ANIMAION */
+.scale-and-fade-in {
+  animation-name: scale-and-fade-in;
+  animation-duration: .4s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes scale-and-fade-in {
+  0% {
+    opacity: 0;
+    scale: 0;
+  }
+
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+/* TEST ANIMATION */
+/* .slide-from-left-and-fade-in {
+  animation-name: scale-and-fade-in;
+  animation-duration: .4s;
+  animation-timing-function: ease-in-out;
+
+}
+
+@keyframes slide-from-left-and-fade-in {
+  0% {
+    opacity: 0;
+    translate: -40px;
+  }
+
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.delay-1 {
+  animation-delay: .1s;
+}
+
+.delay-2 {
+  animation-delay: .2s;
+}
+
+.delay-3 {
+  animation-delay: .3s;
+}
+
+.delay-4 {
+  animation-delay: .4s;
+} */
+
+
+/* REGULAR ON PLAGE LOAD ANIMATIONS */
+
+..slide-from-top-and-fade-in {
+  animation-name: slide-from-top-and-fade-in;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0, .5, .5, 1);
+  animation-fill-mode: forwards;
+  opacity: 0;
+  translate: 0 -40px;
+}
+
+@keyframes slide-from-top-and-fade-in {
+  0% {
+    opacity: 0;
+    translate: 0 -40px;
+  }
+
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+
+.slide-from-left-and-fade-in {
+  animation-name: slide-from-left-and-fade-in;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0, 1, 0, 1);
+  animation-fill-mode: forwards;
+  opacity: 0;
+  translate: -20px 0;
+}
+
+@keyframes slide-from-left-and-fade-in {
+  0% {
+    opacity: 0;
+    translate: -20px 0;
+  }
+
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.delay-0 {
+  animation-delay: 0s;
+}
+
+.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.delay-2 {
+  animation-delay: 0.2s;
+}
+
+.delay-3 {
+  animation-delay: 0.3s;
+}
+
+.delay-4 {
+  animation-delay: 0.5s;
+}
+
+.delay-5 {
+  animation-delay: 0.7s;
+}
+
+.delay-6 {
+  animation-delay: 0.9s;
+}
+
+
+/* SCROLL-TRIGGERED ANIMATION */
+
+/* FIX SCROLL BAR ON ALL SCROLL ANIMATION SECTIONS */
+section:has(.observe-me) {
+  overflow-x: clip;
+}
+
+/* on scroll slide-in from the left */
+.observe-me.onscroll-slide-in-from-left {
+
+  /* Simple way */
+  opacity: 0;
+  translate: -20px 0;
+  transition: all .5s ease-out .2s;
+
+  /* Complicated way */
+  /* --duration: .5s;
+  --delay: .2s;
+  opacity: 0;
+  translate: -20px 0;
+  transition: 
+      translate var(--duration) ease-out var(--delay), 
+      opacity var(--duration) linear var(--delay); */
+
+}
+
+.observe-me[data-viewstate="active"].onscroll-slide-in-from-left {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* on scroll slide-in from the right */
+.observe-me.onscroll-slide-in-from-right {
+  opacity: 0;
+  translate: 20px 0;
+  transition: all .5s ease-out .2s;
+}
+
+.observe-me[data-viewstate="active"].onscroll-slide-in-from-right {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.observe-me.delay-0 {
+  transition-delay: 0s;
+}
+
+.observe-me.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.observe-me.delay-2 {
+  transition-delay: 0.2s;
+}
+
+.observe-me.delay-3 {
+  transition-delay: 0.3s;
+}
+
+.observe-me.delay-4 {
+  transition-delay: 0.5s;
+}
+
+.observe-me.delay-5 {
+  transition-delay: 0.7s;
+}
+
+.observe-me.delay-6 {
+  transition-delay: 0.9s;
 }

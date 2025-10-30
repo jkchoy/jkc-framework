@@ -19,6 +19,7 @@ TABLE OF CONTENTS
     # HEADER
         # LOGO
         # SITE NAV
+        # DROPDOWN MENU
     # MAIN
         # SECTIONS
     # FOOTER
@@ -51,47 +52,46 @@ TABLE OF CONTENTS
 :root {
 
   /* DEFINE BASE COLORS */
-  --color-white: #fff;
-  --color-black: #000;
+  --color-white: #FDFDFD;
+  --color-black: #121228;
   --color-black-80: rgb(0 0 0 / .8);
 
   --color-grey-200: rgb(0 0 0 / .2);
 
-  --color-blue-100: #caf0f8;
-  --color-blue-400: #3170ce;
-  --color-blue-600: #0b3d91;
-  --color-blue-900: #061a9e;
+  /* main blue */
+  --color-blue-900: #043170;
 
-  --color-purple-200: #dcbcf1;
-  --color-purple-400: #b65ded;
-  --color-purple-600: #860dba;
-  --color-purple-900: #4b0d65;
+  /* light background boxes & title heading box*/
+  --color-gray-100: #F2F2F2;
+  /* buttons */
+  --color-gray-200: #D9D9D9;
+  /* subheader */
+  --color-gray-600: #7F7A7A;
 
-  --color-brown-100: #f4e1d2;
-  --color-brown-200: #e6b89c;
-  --color-brown-400: #a0522d;
-  --color-brown-600: #7b3f1a;
+
+  --color-gold-400: #D8A008;
+  --color-gold-600: #9E7607;
 
 
   /* DEFINE SEMANTIC COLORS */
   --color-body-background: var(--color-white);
   --color-body-text: var(--color-black);
-  --color-body-text-dark: var(--color-blue-400);
+  --color-body-text-dark: var(--color-blue-900);
 
   --color-primary: var(--color-blue-400);
   --color-primary-dark: var(--color-blue-900);
-  --color-secondary: var(--color-purple-400);
+  --color-secondary: var(--color-gray-600);
 
   /* ACTION COLORS */
-  --color-links: var(--color-purple-400);
-  --color-links-hover: var(--color-brown-400);
-  --color-links-light: var(--color-purple-200);
+  --color-links: var(--color-blue-900);
+  --color-links-hover: var(--color-gold-400);
+  --color-links-light: var(--color-gray-600);
 
   /* SECTION SPECIFIC */
   --color-siteheader-background: transparent;
   --color-siteheader-links: var(--color-black-80);
-  --color-siteheader-hover: var(--color-blue-400);
-  --color-hero-background: var(--color-blue-100);
+  --color-siteheader-hover: var(--color-gold-400);
+  --color-hero-background: var(--color-gray-100);
   --color-sitefooter-background: transparent;
 
   /* BORDERS */
@@ -112,86 +112,41 @@ TABLE OF CONTENTS
 
 
 
+  /* IMPORT GOOGLE FONTS */
+
+
+  /* <weight>: Use a value from 300 to 700 */
+  /* <uniquifier>: Use a unique and descriptive class name */
+
+  .cormorant {
+    font-family: "Cormorant", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+
+  .nunito-sans {
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100,
+      "YTLC" 500;
+  }
+
   /* GLOBAL FONTS */
 
+  --font-body: Nunito Sans,
+  Lato,
+  arial,
+  "helvetica neue",
+  sans-serif;
 
-  --font-body: Lato, arial, "helvetica neue", sans-serif;
+  --font-headings: Cormorant,
+  serif;
 
-  --font-headings: Merriweather, Times, "Times New Roman", serif;
-
-}
-
-
-/* IMPORT GOOGLE FONTS */
-
-
-.merriweather {
-  font-family: "Merriweather", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
-}
-
-.lato-thin {
-  font-family: "Lato", sans-serif;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.lato-light {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.lato-regular {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.lato-bold {
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.lato-black {
-  font-family: "Lato", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-}
-
-.lato-thin-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.lato-light-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.lato-regular-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.lato-bold-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.lato-black-italic {
-  font-family: "Lato", sans-serif;
-  font-weight: 900;
-  font-style: italic;
 }
 
 /* SET GLOBAL COLORS */
@@ -476,7 +431,7 @@ html {
 
 /* FOR DEMO PURPOSES ONLY */
 .row.demo>* {
-  background-color: var(--color-brown-100);
+  background-color: var(--color-gray-100);
   text-align: center;
   padding: var(--unit-s);
 }
@@ -534,7 +489,56 @@ html {
 
 /* MAIN SITE NAV */
 
-.site-nav ul {
+/* DROPDOWN MENU FOR MY CRAFT */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: var(--color-siteheader-links);
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* .navbar a:hover, */
+.dropdown:hover .dropbtn {
+  background-color: var(--color-gold-400);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: var(--color-blue-900);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--color-gray-100);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.site-nav ul,
+.dropbtn {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -543,7 +547,8 @@ html {
   flex-wrap: wrap;
 }
 
-.site-nav a {
+.site-nav a,
+.dropbtn {
   color: var(--color-siteheader-links);
   text-decoration: none;
   font-weight: bold;
@@ -552,7 +557,8 @@ html {
   padding-block-start: calc(var(--unit-xs) + .1em);
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.dropbtn:hover {
   color: var(--color-siteheader-hover);
   text-decoration: none;
   font-weight: bold;
@@ -560,6 +566,9 @@ html {
   padding: var(--unit-xs);
   padding-block-start: calc(var(--unit-xs) + .1em);
 }
+
+
+
 
 /* SHOW MENU BUTTON ON HIGHER LAYER WHEN NAV IS OPEN */
 .site-nav .menubutton {
@@ -605,7 +614,7 @@ html {
     top: 0;
     width: 100%;
     height: 100%;
-    background: var(--color-blue-400);
+    background: var(--color-blue-900);
     /* transition: translate 0.3s ease-out; */
   }
 
@@ -1062,4 +1071,69 @@ section:has(.observe-me) {
 
 .observe-me.delay-6 {
   transition-delay: 0.9s;
+}
+
+
+/* CARDS */
+
+.cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 30px auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 40px;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card .card_image {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.card .card_image img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.card .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: -80px;
+  height: 40px;
+}
+
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+}
+
+.title-white {
+  color: white;
+}
+
+.title-black {
+  color: black;
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
 }
